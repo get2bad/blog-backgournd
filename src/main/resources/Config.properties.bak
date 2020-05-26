@@ -1,12 +1,12 @@
 # ElasticSearch
-wills.server.ip = 39.107.13.154
+wills.server.ip = 您的服务器地址
 wills.server.elasticsearch.port = 9200
-# redis��Ӧ�ļ�ֵ
+# redis对应的键值
 wills.redis.user.login = user-login
 wills.redis.user.role = user-role
 wills.redis.role.permission = role-permission
-# ����captcha ��֤����֤id����Կ
-wills.captcha.appId = 70ff989b1432edb9cdae844cfb0fbec1
-wills.captcha.appSecret = 3f5de707c17d1fd35b772b9113288ba2
-# JavaMail����
+# 万象captcha 验证码验证id和密钥
+wills.captcha.appId = 在这里填入您的万象 AppId
+wills.captcha.appSecret = 在这里填入您的万象appSecret
+# JavaMail配置
 wills.email.from = loveing490@qq.com
