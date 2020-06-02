@@ -6,6 +6,7 @@ import com.wills.blog.bean.StatusCode;
 import com.wills.blog.service.RoleUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class RoleUserController {
 
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "删除某一用户的所有角色")
-    // 更新也使用同一个方法
+    @RequiresRoles(value = {"系统管理员"})
     public Result delete(@PathVariable("id") int id, @RequestBody List<Role> all){
         roleUserService.update(id,all);
         return new Result();
@@ -29,7 +30,7 @@ public class RoleUserController {
 
     @PostMapping("update/{id}")
     @ApiOperation(value = "更新某一用户的所有角色")
-    // 更新也使用同一个方法
+    @RequiresRoles(value = {"系统管理员"})
     public Result update(@PathVariable("id") int id, @RequestBody List<Role> all){
         roleUserService.update(id,all);
         return new Result();
@@ -37,7 +38,7 @@ public class RoleUserController {
 
     @PutMapping("add/{id}")
     @ApiOperation(value = "增加某一用户的所有角色")
-    // 更新也使用同一个方法
+    @RequiresRoles(value = {"系统管理员"})
     public Result add(@PathVariable("id") int id, @RequestBody List<Role> all){
         roleUserService.update(id,all);
         return new Result();

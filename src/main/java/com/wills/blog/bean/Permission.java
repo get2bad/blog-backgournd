@@ -2,7 +2,9 @@ package com.wills.blog.bean;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -13,6 +15,8 @@ import java.util.List;
 @Table(name = "permission")
 @ApiModel(value = "权限",description = "Permission")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Permission implements Serializable {
 
     @Id

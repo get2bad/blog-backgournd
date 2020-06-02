@@ -5,6 +5,7 @@ import com.wills.blog.bean.UserInfo;
 import com.wills.blog.service.UserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,9 @@ public class UserInfoController {
     @Autowired
     private UserInfoService service;
 
-    @ApiOperation(value = "获取指定用户信息")
     @GetMapping("/get/{id}")
+    @ApiOperation(value = "获取指定用户信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result getUserInfo(@PathVariable("id") int id){
         UserInfo byUserId = service.getByUserId(id);
         return Result.buildSuccess(byUserId);

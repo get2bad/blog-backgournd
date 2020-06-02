@@ -7,6 +7,7 @@ import com.wills.blog.bean.StatusCode;
 import com.wills.blog.service.PermissionRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,7 @@ public class PermissionRoleController {
 
     @ApiOperation(value = "更新角色权限")
     @PostMapping("update/{roleId}")
+    @RequiresRoles(value = {"系统管理员"})
     public Result update(@PathVariable("roleId")int roleId, @RequestBody List<Integer> all){
         p.operate(roleId,all);
         return new Result();

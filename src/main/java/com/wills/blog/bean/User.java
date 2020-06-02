@@ -36,4 +36,8 @@ public class User implements Serializable {
     @Column(name = "status")
     @ApiModelProperty(name = "status",required = false)
     private int status;
+
+    public int getId(){
+        return this.userId;
+    }
 }

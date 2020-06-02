@@ -2,7 +2,9 @@ package com.wills.blog.bean;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ import java.io.Serializable;
 @Table(name = "role_user")
 @ApiModel(value = "用户角色",description = "用户角色表")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RoleUser implements Serializable {
 
     @Id
@@ -26,10 +30,5 @@ public class RoleUser implements Serializable {
 
     public RoleUser(int userId) {
         this.userId = userId;
-    }
-
-    public RoleUser(int userId, int roleId) {
-        this.userId = userId;
-        this.roleId = roleId;
     }
 }

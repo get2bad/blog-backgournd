@@ -6,6 +6,7 @@ import com.wills.blog.bean.WillsPageHelper;
 import com.wills.blog.service.CommentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,11 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    /**
+     * 增加评论
+     * @param comment
+     * @return
+     */
     @PutMapping("add")
     @ApiOperation(value = "增加评论")
     public Result add(@RequestBody Comment comment){
@@ -30,13 +36,24 @@ public class CommentController {
         return Result.buildSuccess();
     }
 
+    /**
+     * 删除评论
+     * @param commentId
+     * @return
+     */
     @DeleteMapping("delete/{commentId}")
     @ApiOperation(value = "删除评论")
+    @RequiresRoles(value = {"系统管理员"})
     public Result delete(@PathVariable("commentId") int commentId){
         commentService.deleteByPK(commentId);
         return Result.buildSuccess();
     }
 
+    /**
+     * 修改评论
+     * @param comment
+     * @return
+     */
     @PostMapping("update")
     @ApiOperation(value = "修改评论")
     public Result update(@RequestBody Comment comment){
@@ -44,6 +61,11 @@ public class CommentController {
         return Result.buildSuccess();
     }
 
+    /**
+     * 获取所有评论
+     * @param willsPageHelper
+     * @return
+     */
     @PostMapping("getAll")
     @ApiOperation(value = "获取所有的评论")
     public Result getAll(@RequestBody(required = false) WillsPageHelper willsPageHelper){
@@ -66,6 +88,7 @@ public class CommentController {
 
     @GetMapping("changeStatus/{id}")
     @ApiOperation(value = "更改评论的显示状态")
+    @RequiresRoles(value = {"系统管理员"})
     public Result changeStatus(@PathVariable("id") int id) {
         commentService.changeStatus(id);
         return Result.buildSuccess();

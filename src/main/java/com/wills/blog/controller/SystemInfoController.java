@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * TODO 应该修改为多线程获取！要不单线程获取会出现BUG！！切记！使用线程池去解决
+ */
 @RestController
 @RequestMapping("/system")
 @Api(tags = "获取系统信息")

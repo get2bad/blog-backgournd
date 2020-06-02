@@ -6,6 +6,7 @@ import com.wills.blog.bean.Tag;
 import com.wills.blog.bean.User;
 import com.wills.blog.dao.ArticalMapper;
 import com.wills.blog.util.ActiveID;
+import com.wills.blog.util.MD5Util;
 import io.swagger.models.auth.In;
 import lombok.extern.log4j.Log4j;
 import org.apache.http.HttpHost;
@@ -212,5 +213,11 @@ class BlogApplicationTests {
         for (SearchHit hit : resp.getHits().getHits()) {
             System.out.println(hit.getSourceAsMap());
         }
+    }
+
+    @Test
+    public void testMd5(){
+        String wills = MD5Util.encrypt("wills");
+        System.out.println(wills);
     }
 }

@@ -6,6 +6,7 @@ import com.wills.blog.bean.StatusCode;
 import com.wills.blog.service.NoteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,7 @@ public class NoteController {
 
     @DeleteMapping("delete/{noteId}")
     @ApiOperation(value = "删除留言")
+    @RequiresRoles(value = {"系统管理员"})
     public Result delete(@PathVariable("noteId") int noteId){
         noteService.delete(noteId);
         return new Result();
@@ -38,6 +40,7 @@ public class NoteController {
 
     @PostMapping("update")
     @ApiOperation(value = "更新留言")
+    @RequiresRoles(value = {"系统管理员"})
     public Result update(@RequestBody Note note){
         noteService.update(note);
         return new Result();

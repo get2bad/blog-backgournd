@@ -6,6 +6,7 @@ import com.wills.blog.bean.WillsPageHelper;
 import com.wills.blog.service.MenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,7 @@ public class MenuController {
 
     @PutMapping("add")
     @ApiOperation(value = "添加结构信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result add(@RequestBody Menu menu){
         service.add(menu);
         return Result.buildSuccess();
@@ -29,6 +31,7 @@ public class MenuController {
 
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "删除结构信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result delete(@PathVariable("id") int id){
         service.delete(id);
         return Result.buildSuccess();
@@ -36,6 +39,7 @@ public class MenuController {
 
     @PostMapping("update")
     @ApiOperation(value = "更新结构信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result update(@RequestBody Menu menu){
         service.update(menu);
         return Result.buildSuccess();

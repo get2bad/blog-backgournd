@@ -8,6 +8,12 @@ import com.wills.blog.util.CaptchaUtil;
 import com.wills.blog.util.MD5Util;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.*;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -21,6 +27,7 @@ import java.util.*;
 @RestController
 @RequestMapping(value = "user")
 @Api(tags = "用户登陆/注册")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -44,8 +51,27 @@ public class UserController {
     @Value("${wills.email.from}")
     private String mailFrom;
 
+    @GetMapping("/not_login")
+    @ApiOperation(value = "没有登录")
+    public Result notLogin(){
+        return new Result(false,405,"您没有登录哦，请您重新尝试登录");
+    }
+
+    @GetMapping("/not_permit")
+    @ApiOperation(value = "没有权限")
+    public Result notPermit(){
+        return new Result(false,405,"您没有相应的权限哦，请您重新尝试！");
+    }
+
+    /**
+     * 重置用户密码接口，权限: 任何人，包括匿名用户
+     * @param userInfo
+     * @return
+     * @throws MessagingException
+     */
     @PostMapping("/resetPwd")
     @ApiOperation(value = "用户重置密码")
+    @RequiresGuest
     public Result resetPwd(@RequestBody UserInfo userInfo) throws MessagingException {
         System.out.println(userInfo);
         int id = userInfo.getUserId();
@@ -64,8 +90,14 @@ public class UserController {
         return Result.buildSuccess();
     }
 
+    /**
+     * 获取所有用户的接口
+     * @param pageHelper
+     * @return
+     */
     @PostMapping("/getAll")
     @ApiOperation(value = "获取用户列表")
+    @RequiresRoles(value = {"系统管理员"})
     public Result<Map<String,Object>> getAllUser(@RequestBody WillsPageHelper pageHelper){
         Map<String,Object> info = new HashMap<String,Object>();
         List<User> list = userService.getAllUser(pageHelper);
@@ -81,8 +113,14 @@ public class UserController {
         return new Result<Map<String,Object>>(true, StatusCode.STATUS_OK,"获取全部用户信息成功！", info);
     }
 
+    /**
+     * 会员注册接口
+     * @param userTotal
+     * @return
+     */
     @PutMapping("/regist")
     @ApiOperation(value = "注册用户")
+    @RequiresGuest
     public Result regist(@RequestBody UserTotal userTotal){
         User user = userTotal.getUser();
         user.setPassword(MD5Util.encrypt(user.getPassword()));
@@ -94,8 +132,15 @@ public class UserController {
         return new Result();
     }
 
+    /**
+     * <b>已经废弃！</b></></>使用shiro后，所有的接口以token交互的方式进行，所以不需要本接口来确定是否是登录状态
+     * @param token
+     * @return
+     */
+    @Deprecated
     @GetMapping("/login/{token}")
     @ApiOperation(value = "验证用户是否还在已登陆状态 200 有 600 没有")
+    @RequiresGuest
     public Result login(@PathVariable String token){
         boolean exists = redisService.ifKeyExists(USER_LOGIN_KEY + ":" +token);
         if(exists) {
@@ -105,27 +150,29 @@ public class UserController {
         }
     }
 
+    /**
+     * 用户登录
+     * @param user 获取前台传送的User对象进行封装
+     * @param token 指的是万象验证成功后传回的token
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/login/{token}")
     @ApiOperation(value = "用户登陆操作")
     public Result login(@RequestBody User user,@PathVariable String token) throws Exception {
         // 先验证token是否正确验证，如果正确进行下一步
         if(CaptchaUtil.verifyToken(token)){
-            User one = userService.findOne(user);
-            if(one != null){
-                if(one.getPassword().equals(MD5Util.encrypt(user.getPassword()))){
-                    List<Role> userRole = roleService.getUserRole(one.getUserId());
-                    for (Role role : userRole) {
-                        List<Permission>  all=permissionService.getRolePermission(role.getRoleId());
-                        role.setAllPermission(all);
-                    }
-                    // TODO token问题没有搞定，等前端真正做完开始对接时进行处理token问题
-                    redisService.login(token, JSON.toJSONString(userRole));
-                    return new Result(true,StatusCode.STATUS_OK,"登陆成功！");
-                }else {
-                    return new Result(false,StatusCode.STATUS_REQUIRE_FALL,"用户名/密码错误，请重新尝试！");
-                }
-            }else{
-                return Result.buildServerError();
+            Subject subject = SecurityUtils.getSubject();
+            UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(user.getUserName(),user.getPassword());
+            try {
+                subject.login(usernamePasswordToken);
+                // 获取token
+                String sessionId = subject.getSession().getId().toString();
+                log.info(user.getUserName() + "登录成功！");
+                return new Result(true,StatusCode.STATUS_OK,"登陆成功！",sessionId);
+            } catch (AuthenticationException e) {
+                log.info(user.getUserName() + "登录失败，可能是密码错误！");
+                return new Result(false,StatusCode.STATUS_REQUIRE_FALL,"用户名/密码错误，请重新尝试！");
             }
         }else{
             return new Result(false,StatusCode.STATUS_REQUIRE_FALL,"需要重新验证验证码！");
@@ -135,21 +182,46 @@ public class UserController {
 
     @PostMapping("/update")
     @ApiOperation(value = "修改用户资料操作")
+    @RequiresAuthentication // 需要登录的用户权限
     public Result update(@RequestBody UserInfo userInfo){
         System.out.println(userInfo);
         userService.updateUserData(userInfo);
         return new Result();
     }
 
+    /**
+     * 退出登录 头部一定要带token
+     * @return
+     */
+    @GetMapping("/logout")
+    @ApiOperation(value = "退出登录")
+    public Result logout(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return Result.buildSuccess();
+    }
+
+    /**
+     * 禁止某一用户的登录状态
+     * @param id
+     * @return
+     */
     @DeleteMapping("/ban/{id}")
     @ApiOperation(value = "禁止某一用户登陆")
+    @RequiresRoles(value = {"系统管理员"})
     public Result banUser(@PathVariable("id")int id){
         userService.banUser(id);
         return new Result();
     }
 
+    /**
+     * 获得某个用户的详细信息 需要的权限，系统管理员
+     * @param id
+     * @return
+     */
     @GetMapping("/getById/{id}")
     @ApiOperation(value = "获得某个用户的详细信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result getById(@PathVariable("id") int id) {
         User user = userService.getById(id);
         return Result.buildSuccess(user);

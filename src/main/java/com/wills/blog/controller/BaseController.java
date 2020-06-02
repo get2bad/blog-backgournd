@@ -5,6 +5,7 @@ import com.wills.blog.bean.Result;
 import com.wills.blog.service.BaseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class BaseController {
 
     @GetMapping("/getAllNav")
     @ApiOperation(value = "获取所有的后台导航")
+    @RequiresRoles(value = {"系统管理员"})
     public Result getAllNav(){
         List<Base> all = baseService.getAll();
         return Result.buildSuccess(all);

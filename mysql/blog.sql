@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50527
-Source Host           : localhost:3306
+Source Server         : 阿里云Docker
+Source Server Version : 50647
+Source Host           : 39.107.13.154:3306
 Source Database       : blog
 
 Target Server Type    : MYSQL
-Target Server Version : 50527
+Target Server Version : 50647
 File Encoding         : 65001
 
-Date: 2020-05-07 11:58:02
+Date: 2020-06-02 18:46:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,16 +35,14 @@ CREATE TABLE `artical` (
   `is_submit_top` int(11) DEFAULT '0',
   `tag` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`artical_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of artical
 -- ----------------------------
-INSERT INTO `artical` VALUES ('3', '4', '1', '2020-03-29', '24', '0', '博客测试标题', '123', 'http://image.tinx.top/2020/3/29/articleTitle/environment.jpg', '```java\nSystem.out.println(\'hello world\')\n```\n以前觉得，谈恋爱，一定要找一个百分百对自己好的人。体贴、温柔的人真的很讨喜呀，他愿意包容我的小脾气，接纳我的小情绪，分享我的不满和委屈，在我被悲伤和失落包围的时候，给我恰到好处的温柔和爱意。这样的他会让我觉得，他是真的很爱很爱我可现实是，对很多女孩子来说，想要找到一个百分百的人，太难了，换句话讲，无限包容和忍让，或许只是爱情的其中一种样子我想，还有一种爱情，可能听起来不够甜蜜，但事实上，却应该是很多女孩子期待的恋爱真实状态：遇到一个愿意好好陪你吵架的男孩好友Andy就是一个性格外向的女孩，她属于那种有什么话一定要说出来，绝对不会憋在心里半句谈恋爱之后，Andy风风火火的脾气没有任何改变，可恰好她的男朋友也是一个直来直去的人，时间久了，我们都很好奇他们两个人该如何相处下去有次我和Andy一起加班到很晚，Andy给男友发微信，希望他可以来接我们，没想到过了半小时也没等到回复Andy有点想发火，但还是忍着拨通了男友的电话“我刚刚没听到，怎么啦？大概是在气头上，Andy不由分说地把男生骂了一顿，也许是为了发泄吧，语气十分很强烈让我吃惊地是，男生没有道歉或者沉默，而是用同样分贝的声音和Andy“吵”了起来：“喂，我也很累呀，给点面子好不好？再说了，你这么大个人不会打车吗，真是的……然后，他们两个人你一言我一语，在电话里展开了辩论，足足持续了二十分钟但挂掉电话，Andy并没有表现出生气的样子结果一会儿，男友把车开到了公司楼下，他朝Andy作出一副恭恭敬敬的手势：“欢迎老婆大人上车，我们打道回府。我和Andy都被逗笑了后来Andy告诉我，吵架其实他们两个人的常态，因为都是脾气火爆的人，所以很多事情根本憋不住，不如干脆把不满说出来，也好过彼此隐瞒“我觉得，吵架也是检验爱情的标准之一，如果他连吵架都懒得跟你吵，两个人的隔阂只会越来越深，时间久了，就再也看不清对方了。深以为然，一直觉得，两个人在一起，就是一个不断暴露自我的过程，双方都会有大大小小的缺点，在吵架的过程中，如果可以把心中的不痛快发泄出来，才能真正看出对方的态度如果确实不能继续相处，三观不合，好聚好散也好过藕断丝连的拖着最怕的不是吵到天翻地覆，而是一味地退让隐忍，或者干脆使用冷暴力知乎上有个答主讲过自己的故事：“和男朋友分手，只是因为他没有好好听我发的语音。我的朋友很多，因为和他们在一起的时候，我总是把委屈和难过憋在心里，因为我觉得这些要讲给最重要的问题，比如家人，闺蜜，恋人可能女孩子觉得，给对方发很长很长一段话，是因为对方在自己心里很重要。但其实对于男生来说，这份重要性往往等同于矫情那天我被老板误会，心里特别委屈，就给他发语音倾诉了自己的不满，结果我等了整整一下午，直到晚上，他才发来一句“嗯”那一刻，我整颗心都是死的也许是心里的委屈还没有消化掉，我打电话过去准备和他大吵一架，没想到，电话接通之后，我自己一个人说得口干舌燥，他只说了一句话：“说完了吗？我还要去开会。那一刻我才清楚的认识到，自己在他心里的地位有多低也许是爱得不够吧，也许是懒得辩解，但我真的很讨厌冷暴力，好像只有你一个人在上演独角戏，对方只是台下的一名观众，事不关己，高高挂起，那种感觉太让人失望了。是啊，爱情里最可怕的不是争吵，而是吵不起来对于女生来说，我不是非要争个谁对谁错，只是问题得不到解决，双方心里都会留下一颗毒瘤，久而久之，总会迎来毒发身亡的那天爱情幸福的秘诀用八个字就可以概括：好好吵架，主动认输她的男朋友是一个木讷寡言的理工男，不会说好人的情话，也不会买漂亮的节日礼物，但是他们结婚好几年，感情一直特别稳定原因是，两个人婚后也会有大大小小的吵架，他们的三观也不是完完全全契合，但是问题出现的时候，总会有人主动解决有一次，他们因为买车的问题产生了分歧，两个人在银行大声争执了几句后，她生气地撇下丈夫回家了，没吃晚饭就钻进卧室倒头大睡第二天早上起床的时候，她闻到了一股早餐的香气，胃也开始咕咕叫，但是一想起昨天的争吵，又觉得拉不下面子正在她犹豫要不要主动说话的时候，突然看到床头柜上放了一张纸条，上面写了两行字第一行：亲爱的老婆，昨天是我不好，向你道歉，记得趁热吃早餐第二行：首相加末项的和乘以项数除以二她突然大笑起来笑了，因为第二句话的意思是：求和不得不说，这样委婉有趣的道歉方式，足以显示出一个人的情商，既好过口诛笔伐的争吵，也胜过互不理睬的冷暴力说实话，我一点不羡慕那些言听计从的爱情，也不羡慕那种百分百包容的恋爱，恋爱应该是一件很丰富的事儿，倘若只有柴米油盐酱醋茶的琐碎，那种恋爱也太无趣了就像之前还有个读者给我留言说，北哥，我真的好想和男朋友吵一架啊，他什么都让着我，包容我，体谅我，可在我犯错的时候，没有人会指出我的错误，在我颓废的时候，没有人告诉我应该努力，我好害怕有一天，自己变成一个废人，这样的爱情让我觉得十分没意思是啊，我个人觉得，爱情里只会使用冷暴力的人，其实是懦弱的表现，因为问题只会越积越多，隔阂只会越积越深，日积月累，两个人的爱情也会被消磨得只剩疲惫。\n', '0', '0', '0', '3,9');
-INSERT INTO `artical` VALUES ('5', '1', '1', '2020-03-31', '21', '0', 'Java 天下第一！', '不多说了，牛逼就完事了！', 'http://image.tinx.top/2020/3/31/articleTitle/sea.jpg', '# java天下第一你不知道？\n---\n~~~ php\n你怕是傻屌哦！\n', '0', '0', '0', '1,9');
-INSERT INTO `artical` VALUES ('6', '4', '1', '2020-03-31', '66', '0', 'Blog测试标题1', '12312312321321312', 'http://image.tinx.top/2020/3/31/articleTitle/water.jpg', '|1|2|3|\n|-|-|-|\n|测试1|测试2|测试3|\n\n', '0', '0', '0', '3,9');
-INSERT INTO `artical` VALUES ('7', '7', '1', '2020-04-09', '0', '0', '博客测试文章', '博客测试文章', 'http://image.tinx.top/2020/4/10/articleTitle/sun.jpg', '# 大家好，我是Wills\n---\n很高兴和大家做朋友\n---\n> 很高兴和大家做朋友哦~！', '0', '0', '0', '9');
-INSERT INTO `artical` VALUES ('8', '4', '1', '2020-04-10', '0', '0', '博客测试1', '1231231231', 'http://image.tinx.top/2020/4/11/articleTitle/tree&water.jpg', '# 你好吗？\n---\n我叫大王帅，很高兴见到大家哈~！能和大家做朋友是我的荣幸！good!', '0', '0', '0', '3');
+INSERT INTO `artical` VALUES ('9', '2', '1', '2020-05-26', '0', '0', 'Java面试题', '这是我整理的Java面试题，仅供参考~！', 'http://image.tinx.top/2020/5/27/articleTitle/time.jpg', '# Java面试测试\n\n---\n\n## try catch问题\n\n> 假如说在try中return了，那么finally中的代码会执行吗？\n>\n> 会执行，执行完finally中的代码后return\n\n## synchornized和lock/unlock\n\n> + synchronized 同步方法\n>\n>   其他线程如果想访问一个线程正在执行的同步方法，就会进入一个等待的状态，等这个线程释放锁以后，其他线程就会进行资源竞争，释放锁有两个条件：\n>\n>   1. 该线程执行完毕对应的代码块，自动释放锁\n>   2. 在执行该代码块中发生了异常，JVM会自动释放锁\n>\n> + lock\n>\n>   唯一的实现类是ReentranLock，这个锁是可重入锁，该锁支持两种模式：\n>\n>    1. 公平锁\n>\n>       当线程A获取访问该对象，获取到锁以后，此时内部存在一个计数器num+1,其他线程想访问该对象，就会进行排队等待，直到线程A释放锁(num=0)，此时会唤醒处于等待状态的线程进行获取锁的过程，一直循环。\n>\n>       如果线程A想再次尝试获取该对象的锁时，会检查该对象锁已经释放/被占用，如果被占用，会做一次是否为当前线程占用锁的判断，如果是内部计数器num+1,并且不需要进入等待队列，而是直接回去当前锁\n>\n>    2. 非公平锁\n>\n>       当线程A在释放锁以后，等待对象的线程会进行资源竞争，竞争成功的线程将获取该锁，其他线程继续睡眠\n>\n>   \n>\n>   公平锁是严格的以队列FIFO的方式进行锁的竞争，但是非公平锁是无序的锁竞争，刚释放锁的线程很大程度上能比较快的获取到锁，队列中的线程只能等待，所以非公平锁可能会有“饥饿”的问题。但是重复的锁获取能减小线程之间的切换，而公平锁则是严格的线程切换，这样对操作系统的影响是比较大的，所以非公平锁的吞吐量是大于公平锁的，这也是为什么JDK将非公平锁作为默认的实现。\n>\n>   下面是Lock锁的方法：\n>\n>   ​	![](https://img2018.cnblogs.com/blog/1222507/201906/1222507-20190603210347151-1972345480.png)\n\n## 集合\n\n> 集合可以大致分为两个总类:\n>\n> + Collection\n>\n>   + List // 有序，可以重复的集合，查询效率高，插入删除效率低，会引起元素位置的改变\n>\n>     + ArrayList // 底层是数组，在内存中是一整块区域，对于插入更新效率不高，因为底层是数组\n>     + LinkedList // 底层是链表，在内存中不是一整块区域，对于插入更新效率高，但是查询效率低\n>     + **Vector** // 是多线程安全的，内部包裹syncchronized，但是这样效率低\n>\n>   + Set // 无序、不可重复的集合，查询效率低，删除和插入效率高，插入和删除不会引起元素位置改变\n>\n>     + HashSet //能够最快的获取集合中的元素，效率非常高（以空间换时间）\n>     + TreeSet //会自动排序\n>\n>     ``` java\n>     // Collection 集合类下面的方法\n>     1、boolean add(Object o)：向集合里添加一个元素，成功添加则返回true。 \n>     2、boolean addAll(Collection c)：把集合c里的所有元素添加到指定集合里，成功添加，返回true。\n>     3、void clear()：清除集合里的所有元素，将集合长度变为0。\n>     5、boolean contains(Object o)：判断集合中是否包含指定元素 \n>     6、boolean containsAll(Collection c)：判断集合中是否包含集合c中的所有元素。\n>     7、boolean isEmpty()：判断集合是否为空。为空的时候返回true，否则返回false\n>     8、boolean remove(Object o)：删除集合中指定的o元素，当集合中含有多个o元素的时候，只删除第一个符合条件的元素，并将返回true \n>     9、boolean removeAll(Collection c)：从集合中删除集合c里包含的所有元素（相当于调用该方法的集合 - 集合c）\n>     10、boolean retainAll(Collection c)：从集合中删除集合c里不包含的元素（也就是把调用该方法的集合变成该集合和集合c的交集）（交集方法）。 \n>     11、int size()：返回集合里元素的个数 \n>     12、Object[] toArray()：该方法把一个集合转换为数组，所有的集合元素变成对应的数组元素\n>     ```\n>\n>     \n>\n> + Map // 具有映射关系的集合 Key-Value\n>\n>   + HashMap // 使用哈希表结构，非同步的，效率比HashTable高，允许空键值\n>   + TreeMap \n>   + HashTable // 同步的，不允许空键值\n>\n>   ``` java\n>   1. Map提供了一种映射关系，其中的元素是以键值对（key-value）的形式存储的，能够实现根据key快速查找value；\n>   2. Map中的键值对以Entry类型的对象实例形式存在；\n>   建（key值）不可重复，value值可以重复，一个value值可以和很多key值形成对应关系，每个建最多只能映射到一个值。\n>   3. Map支持泛型，形式如：Map<K,V>\n>   4. Map中使用put(K key,V value)方法添加\n>   // Map接口下的方法\n>   1	void clear( )从此映射中移除所有映射关系（可选操作）。\n>   2	boolean containsKey(Object k)如果此映射包含指定键的映射关系，则返回 true。\n>   3	boolean containsValue(Object v)如果此映射将一个或多个键映射到指定值，则返回 true。\n>   4	Set entrySet( )返回此映射中包含的映射关系的 Set 视图。\n>   5	boolean equals(Object obj)比较指定的对象与此映射是否相等。\n>   6	Object get(Object k)返回指定键所映射的值；如果此映射不包含该键的映射关系，则返回 null。\n>   7	int hashCode( )返回此映射的哈希码值。\n>   8	boolean isEmpty( )如果此映射未包含键-值映射关系，则返回 true。\n>   9	Set keySet( )返回此映射中包含的键的 Set 视图。\n>   10	Object put(Object k, Object v)将指定的值与此映射中的指定键关联（可选操作）。\n>   11	void putAll(Map m)从指定映射中将所有映射关系复制到此映射中（可选操作）。\n>   12	Object remove(Object k)如果存在一个键的映射关系，则将其从此映射中移除（可选操作）。\n>   13	int size( )返回此映射中的键-值映射关系数。\n>   14	Collection values( )返回此映射中包含的值的 Collection 视图。\n>   ```\n>\n>   排序要实现Compareable接口，重写compare方法\n\n## ArrayList和Vector的区别\n\n>1. Vector是多线程安全的，线程安全就是说多线程访问同一代码，不会产生不确定的结 果。而ArrayList不是，这个可以从源码中看出，Vector类中的方法很多有synchronized 进行修饰，这样就导致了Vector在效率上无法与ArrayList相比； \n>\n>2. 两个都是采用的线性连续空间存储元素，但是当空间不足的时候，两个类的增加方式是 不同。 \n>\n>3. Vector可以设置增长因子，而ArrayList不可以。 \n>\n>4. Vector是一种老的动态数组，是线程同步的，效率很低，一般不赞成使用。 \n\n**适用场景分析：** \n\n1. Vector是线程同步的，所以它也是线程安全的，而ArrayList是线程异步的，是不安全的。如果不考虑到线程的安全因素，一般用ArrayList效率比较高。 \n\n2. 如果集合中的元素的数目大于目前集合数组的长度时，在集合中使用数据量比较大的数据，用Vector有一定的优势\n\n## Map的遍历\n\n``` java\n1. 最常用的\nMap <String,String>map = new HashMap<String,String>();\nmap.put(\"熊大\", \"棕色\");\nmap.put(\"熊二\", \"黄色\");\nfor(Map.Entry<String, String> entry : map.entrySet()){\n    String mapKey = entry.getKey();\n    String mapValue = entry.getValue();\n    System.out.println(mapKey+\":\"+mapValue);\n}\n\n2. 查询具体的键或值\nMap <String,String>map = new HashMap<String,String>();\nmap.put(\"熊大\", \"棕色\");\nmap.put(\"熊二\", \"黄色\");\n//key\nfor(String key : map.keySet()){\n    System.out.println(key);\n}\n//value\nfor(String value : map.values()){\n    System.out.println(value);\n}\n3. 使用Iterator对象进行遍历\nIterator<Entry<String, String>> entries = map.entrySet().iterator();\nwhile(entries.hasNext()){\n    Entry<String, String> entry = entries.next();\n    String key = entry.getKey();\n    String value = entry.getValue();\n    System.out.println(key+\":\"+value);\n}\n4. 通过键查找值\nfor(String key : map.keySet()){\n    String value = map.get(key);\n    System.out.println(key+\":\"+value);\n}\n```\n\n## Maven的生命周期与命令\n\n> Maven的生命周期就是对所有的构建过程进行抽象和统一。包含了项目的清理、初始化、编译、测试、打包、集成测试、验证、部署和站点生成等几乎所有的构建步骤。\n>\n> 相关命令:\n>\n> mvn install\n>\n> mvn clean\n>\n> mvn package\n>\n> mvn compile\n>\n> mvn install -Dmaven.test.skip=true\n\n## 集合框架HashMap\n\n> 哈希冲突的解决方案有多种:开放定址法（发生冲突，继续寻找下一块未被占用的存储地址），再散列函数法，链地址法，而HashMap即是采用了**链地址法**，也就是**数组+链表+红黑树**的方式。\n\n## 遍历集合的几种办法\n\n1. for\n2. forEach\n3. Stream\n4. Iterator\n\n## 多线程/线程池\n\n> 线程实现的集中方式：\n>\n> 1. 继承Thread类，重写run方法\n> 2. 实现Runable接口，重写run方法\n> 3. 实现Callable接口，重写call方法，实现时使用FutureTask来包装实现Callable的实现类，来进行start\n> 4. 使用线程池获取线程\n\n### 线程的生命周期\n\n1. 新建\n\n   Thread t = new Thread()\n\n2.  就绪\n\n   t.strat();\n\n3. 运行\n\n   t.run()\n\n4. 阻塞\n\n   t.sleep()/t.stop()/t.wait()\n\n5. 死亡\n\n   t.stop()\n\n## 创建线程池的几种方式\n\n> newFixedThreadPool(int nThreads)\n> 创建一个固定长度的线程池，每当提交一个任务就创建一个线程，直到达到线程池的最大数量，这时线程规模将不再变化，当线程发生未预期的错误而结束时，线程池会补充一个新的线程\n>\n> newCachedThreadPool()\n> 创建一个可缓存的线程池，如果线程池的规模超过了处理需求，将自动回收空闲线程，而当需求增加时，则可以自动添加新线程，线程池的规模不存在任何限制\n>\n> newSingleThreadExecutor()\n> 这是一个单线程的Executor，它创建单个工作线程来执行任务，如果这个线程异常结束，会创建一个新的来替代它；它的特点是能确保依照任务在队列中的顺序来串行执行\n>\n> newScheduledThreadPool(int corePoolSize)\n> 创建了一个固定长度的线程池，而且以延迟或定时的方式来执行任务，类似于Timer。\n\n## 锁的问题\n\n### 乐观锁\n\n> + 在数据库方面\n>\n>   > 乐观锁假设认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做\n>   >\n>   > 实现乐观锁的几种方式：\n>   >\n>   > ```java\n>   > 1. 使用版本号来实现乐观锁\n>   > ```\n>   >\n>   > > 使用数据版本（Version）记录机制实现，这是乐观锁最常用的一种实现方式。何谓数据版本？即为数据增加一个版本标识，一般是通过为数据库表增加一个数字类型的 “version” 字段来实现。当读取数据时，将version字段的值一同读出，数据每更新一次，对此version值加一。当我们提交更新的时候，判断数据库表对应记录的当前版本信息与第一次取出来的version值进行比对，如果数据库表当前版本号与第一次取出来的version值相等，则予以更新，否则认为是过期数据。用下面的一张图来说明：\n>   > >\n>   > > ![](https://images2017.cnblogs.com/blog/1075594/201712/1075594-20171224120703021-326642906.png)\n>   > >\n>   > > 如上图所示，如果更新操作顺序执行，则数据的版本（version）依次递增，不会产生冲突。但是如果发生有不同的业务操作对同一版本的数据进行修改，那么，先提交的操作（图中B）会把数据version更新为2，当A在B之后提交更新时发现数据的version已经被修改了，那么A的更新操作会失败。\n>   > >\n>   > > b.时间戳机制，同样是在需要乐观锁控制的table中增加一个字段，名称无所谓，字段类型使用时间戳（timestamp）, 和上面的version类似，也是在更新提交的时候检查当前数据库中数据的时间戳和自己更新前取到的时间戳进行对比，如果一致则OK，否则就是版本冲突。\n>   >\n>   > ``` java\n>   > 2. 使用条件限制来实现乐观锁\n>   > ```\n>   >\n>   > > 这个适用于只更新是做数据安全校验，适合库存模型，扣份额和回滚份额，性能更高。这种模式也是目前我用来锁产品库存的方法，十分方便实用。\n>   \n>   + 在java方面\n>   \n>   > 使用CAS原子类实现\n>   >\n>   > CAS是一种更新的原子操作，比较当前值跟传入值是否一样，一样则更新，否则失败\n>\n\n乐观锁：比较适合读取操作比较频繁的场景，如果出现大量的写入操作，数据发生冲突的可 能性就会增大，为了保证数据的一致性，应用层需要不断的重新获取数据，这样会增加大量 的查询操作，降低了系统的吞吐量\n\n### 悲观锁\n\n> + 在数据库方面\n>\n> > 关闭autocommit 自动提交事务\n> >\n> > 然后使用for update来实现悲观锁\n>\n> + 在java方面\n>\n> > synchornized包裹的方法/代码块\n\n本质来说，就是悲观锁认为总会有人抢我的。 \n\n乐观锁就认为，基本没人抢。 \n\n## Cookie和Session\n\n> 区别：\n>\n> + Cookie\n>\n>   1. 存在于客户端中，可以被修改\n>   2. 最大只支持4KB\n>   3. 浏览器在每个网站的Cookie的个数有限\n>   4. 网站的基本配置\n>\n> + Session\n>\n>   1. 存在于服务器，客户不能进行修改\n>   2. 无最大限制\n>   3. 依赖于Cookie来存储SeessionID\n>\n>   假如说Cookie被禁用了，则Session还能用吗？\n>\n>   ​	可以！可以对url进行重写，来实现Cookie的部分功能', '0', '0', '0', '1');
+INSERT INTO `artical` VALUES ('10', '2', '1', '2020-05-31', '0', '0', 'JDK8 学习', '学习JDK8的一些小笔记，还算是精髓吧，欢迎交流学习', 'http://image.tinx.top/2020/6/1/articleTitle/cartoon.jpg', '# jdk8新特性学习\n\n## Lambda表达式\n\n> 减少代码量，使之简洁\n>\n> 函数式接口\n>\n> Lambda是一个匿名函数，我们可以把Lambda表达式理解为是一段可以传递的代码\n\n### 语法格式\n\n1. 无参，无返回值\n\n   ``` java\n   Runnable r = () -> System.out.println(\"我爱你\");\n   ```\n\n2. 有参，有返回值\n\n   ``` java\n   Comparator<Integer> c = (o1,o2) -> Integer.compare(o1,o2);\n   System.out.println(c.compare(1,2));\n   ```\n\n3. 有一个参数，无返回值\n\n``` java\nConsumer<String> cc = (String s) -> System.out.println(s);\ncc.accept(\"wills is awsome man !\");\n```\n\n5. 类型推断\n\n``` java\nConsumer<String> cc1 = (s) -> System.out.println(s);\ncc1.accept(\"wills is awesome man !\");\n```\n\n6. 如果只需要一个参数，参数的小括号可以省略\n\n``` java\nConsumer<String> cc1 = s -> System.out.println(s);\ncc1.accept(\"wills is awesome man !\");\n```\n\n7. 需要两个或以上的参数，多条执行语句，并且可以有返回值\n\n``` java\nComparator<Integer> ccc1 = (o1,o2) -> {\n            System.out.println(o1);\n            System.out.println(o2);\n            return o1.compareTo(o2);\n};\nSystem.out.println(ccc1.compare(1,2));\n```\n\n8. 当Lambda只有一条语句时，reuturn 与大括号语句可以省略\n\n   > 详情见6\n\n## 函数式（Functional）接口\n\n> Lambda 表达式的本质: 作为函数式接口的实例\n>\n> 在接口类中使用@FunctionalInterface即可使用lambda表达式\n\n+ 创建一个Functional借口\n\n``` java\n@FunctionalInterface\npublic interface WillsFunctionalInteface {\n\n    void show(String s);\n}\n```\n\n+ 调用\n\n  ``` java\n  WillsFunctionalInteface w = s -> System.out.println(s);\n  w.show(\"wills show yourself\");\n  ```\n\n## jdk8内置四大核心函数式接口\n\n| 函数式接口                      | 参数类型 | 返回类型 | 用途                                                         |\n| ------------------------------- | -------- | -------- | ------------------------------------------------------------ |\n| Consumer<T><br />消费类型接口   | T        | void     | 对类型为T的对象应用操作，包含方法：<br />void accept(T t)    |\n| Supplier<T><br />供给类型接口   | null     | T        | 返回类型为T的对象，包含方法 T get()                          |\n| Function<T,R><br />函数类型接口 | T        | R        | 对类型为T的对象应用操作，并返回结果。结果是R类型的对象，包含方法：R apply(T t) |\n| Predicate<T><br />断定型接口    | T        | boolean  | 确定类型为T的对象是否满足约束，并返回boolean值。包含方法：boolean test(T t) |\n\n+ Consumer\n\n``` hava\n@Test\npublic void t3(){\n    happyTime(2.5,d -> {\n        System.out.println(\"今天学习了好久，去买了泡面吃了，价格为：\" + d);\n    });\n}\n\npublic void happyTime(double d,Consumer<Double> con){\n    con.accept(d);\n}\n```\n\n+ Supplier\n\n  ``` java\n  Emp e = new Emp(1,\"wills\",\"boss\");\n  Supplier<String> s = () -> e.getName();\n  System.out.println(s.get());\n  ```\n\n+ Function \n\n  ``` java\n  // Double为传入参数，Long为返回参数\n  Function<Double,Long> f = Math::round;\n  System.out.println(f.apply(2.5));\n  ```\n\n+ Predicate\n\n  ``` java\n  @Test\n  public void t4(){\n   	List<String> list = new ArrayList<>();\n   	list.add(\"1\");\n   	list.add(\"2\");\n   	list.add(\"3\");\n   	list.add(\"4\");\n   	String filterString = filterString(list, s -> s.contains(\"1\"));\n   	System.out.println(filterString);\n  }\n  \n  public String filterString(List<String> list, Predicate<String> pre){\n      for (String s : list) {\n          if(pre.test(s)){\n              return \"yes\";\n          }\n      }\n      return null;\n  }\n  ```\n\n## 方法引用与构造器引用\n\n> 1. 当要传递给Lambda体的操作，已经有了实现的方法了，可以使用方法引用\n> 2. 方法引用本质上就是Lambda表达式，而Lambda表达式作为函数式接口的实例，所以方法引用，也是函数式接口的实例\n> 3. 方法引用的使用要求:要求接口中的抽象方法的抽象方法的形参列表和返回值类型与方法引用的方法的形参列表和返回值类型相同\n>\n> 有以下三种使用情况：\n>\n> > 对象::实例方法名（非静态方法）\n> >\n> > 类::静态方法名\n> >\n> > 类::实例方法名(非静态方法)\n\n+ 对象::实例方法名\n\n``` java\nComparator<Integer> c1 = Integer::compare;\nSystem.out.println(c1.compare(2,3));\n\n// 使用方法引用形式改变Supplier\nSupplier<String> ss = e :: getName;\nSystem.out.println(ss.get());\n```\n\n+ 类::静态方法名\n\n``` java\nFunction<Double,Long> f = Math::round;\nSystem.out.println(f.apply(2.5));\n```\n\n+ 类::实例方法名(非静态方法)\n\n``` java\nomparator<Integer> c = Integer::compareTo;\nSystem.out.println(c.compare(1, 2));\n\nBiPredicate<Integer,Integer> b = Integer::equals;\nSystem.out.println(b.test(1, 2));\n\nEmp e = new Emp(1,\"wills\",\"boss\");\nFunction<Emp,String> f = Emp::getName;\nSystem.out.println(f.apply(e));\n```\n\n+ 调用别的对象的方法\n\n``` java\nPrintStream ps = System.out;\nConsumer<String> c = ps ::println;\nc.accept(\"wills is nice man\");\n```\n\n### 构造器的使用\n\n---\n\n``` java\n// 调用Emp的空参构造器\nSupplier<Emp> s = Emp::new;\n// 调用Emp的有参构造函数\nFunction<String,Emp> s = Emp::new;\ns.apply(\"wills\")\n// 多参数的Emp构造函数调用 warning: 最多两个参数！！！\nBiFunction<String,String,Emp> b = Emp::new;\nSystem.out.println(b.apply(\"wills\", \"boss\"));\n```\n\n### 数组引用\n\n> 可以把数组看做是一个特殊的类，写法与构造器引用一致\n\n---\n\n``` java\n// 旧方式的引用 创建一个新的自定义长度的数组\nFunction<Integer,String[]> f = length -> new String[length];\nSystem.out.println(f.apply(5).length);\n// 数组调用的方式引用 创建一个新的自定义长度的数组\nFunction<Integer,String[]> ff = String[] :: new;\nSystem.out.println(ff.apply(10).length);\n```\n\n## 强大的Stream Api\n\n> Stream Api把真正的函数式编程风格引入到java中。\n>\n> 这是目前为止对java类库最好的补充，因为Stream API可以极大提供Java程序员生产力，让程序员写出高效率。干净、简洁的代码\n>\n> 使用Stream Api对集合数据进行操作，就类似于使用SQL执行的数据库查询\n>\n> Stream和	Collectio集合的区别：Collection是一种静态的内存数据结构，而Stream是有关计算的。前者是主要面向内存，存储在内存中，后者主要是面向CPU，通过CPU进行计算\n>\n> 注意：\n>\n> 1. Stream自己不会存储元素\n> 2. Stream不会改变源对象，相反，他们会返回一个持有结果的新Stream\n> 3. Stream操作是延迟执行的，这意味着他们会等到需要结果的时候才执行\n\n### Stream操作的三个步骤\n\n1. 创建Stream\n\n``` java\nList<Emp> emps = Emp.getEmps();\n// 顺序流\nStream<Emp> stream = emps.stream();\n// 并行流\nStream<Emp> parallelStream = emps.parallelStream();\n// 通过数组创建Stream\nList<Emp> emps = Emp.getEmps();\nEmp[] e = new Emp[]{emps.get(0),emps.get(1)};\nStream<Emp> stream = Arrays.stream(e);\n\n//通过stream的of 方法\nStream<Integer> stream = Stream.of(1, 2, 3, 4, 5);\n```\n\n2. 中间操作\n\n一个中间操作链，对数据源的数据进行处理\n\n<font color=red>注意！一旦执行终止操作，就不会再被使用！！！请看第2个limit示例，需要重新获取Stream流</font>\n\n``` java\n// 查询员工姓名为a的其中信息输出 filter\nEmp.getEmps().stream().filter(e -> e.getName()==\"a\").forEach(System.out::println);\n// limit 限制输出集合中的几个元素\nEmp.getEmps().stream().limit(2).forEach(System.out::println);\n// skip 跳过集合中的几个元素\nEmp.getEmps().stream().skip(2).forEach(System.out::println);\n// 去除重复元素\nEmp.getEmps().stream().distinct().forEach(System.out::println);\n// map 映射 将字符串数组中的元素编程大写\nList<String> list = Arrays.asList(\"a\", \"b\", \"c\", \"d\");\nlist.stream().map(str -> str.toUpperCase()).forEach(System.out::println);\n// 练习 输出id大于1的员工\nStream<Integer> s = Emp.getEmps().stream().map(Emp::getId);\ns.filter(i -> i >1).forEach(System.out::println);\n// 对于集合中包含别的集合的使用flatMap\n\n// 使用sorted来排序集合中的数据\nList<Integer> list = Arrays.asList(1, 42, 64, 12, -87, -789, -15, 0);\nlist.stream().sorted().forEach(System.out::println);\n// 定制比较器\nList<Emp> emps = Emp.getEmps();\nemps.stream().sorted((e1,e2) -> Integer.compare(e1.getId(),e2.getId())).forEach(System.out::println);\n```\n\n3. 终止操作\n\n一旦执行终止操作，就执行中间操作链，并产生结果。之后，<font color=red>就不会再被使用</font>\n\n``` java\n// allMatch 全部满足\n// anyMatch 部分满足\n// noneMatch 不满足\n// findFirst 返回第一个元素\n// findAny 返回当前流中的任意元素\n// count 返回流中元素的总个数\n// max min 返回最大/最小\n// forEach 内部迭代\n\n// reduce 规约   --reduce(额外的加值,Integer::sum) / reduce(Double::sum)\n\n// collect 用于给Stream做汇总的方法\n```\n\n## Optional<T>类\n\n> 最大化减少空指针异常\n>\n> // ofNullable\n>\n> // orElse', '0', '0', '0', '1');
+INSERT INTO `artical` VALUES ('11', '2', '1', '2020-05-31', '0', '0', 'Java有趣的算法题', 'LeetCode 刷的简单算法题，会持续更新，敬请期待~！', 'http://image.tinx.top/2020/6/1/articleTitle/cartoon1.jpg', '# LeetCode刷题-Java\n\n## 查找字符串首次出现特定字符串的索引\n\n> 实现 strStr() 函数。\n>\n> 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。\n>\n> 示例 1:\n>\n> 输入: haystack = \"hello\", needle = \"ll\"\n> 输出: 2\n> 示例 2:\n>\n> 输入: haystack = \"aaaaa\", needle = \"bba\"\n> 输出: -1\n\n``` java\n// 调用内置函数indexOf()函数\npublic int strStr(String haystack, String needle) {\n    return haystack.indexOf(needle);\n}\n\n// 手动遍历字符串\npublic int strStr(String haystack, String needle) {\n  int L = needle.length(), n = haystack.length();\n  for (int start = 0; start < n - L + 1; ++start) {\n    if (haystack.substring(start, start + L).equals(needle)) {\n      return start;\n    }\n  }\n  return -1;\n}\n```\n\n', '0', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for base
@@ -117,7 +115,7 @@ CREATE TABLE `comment` (
   `status` int(255) DEFAULT '1',
   `user_name` varchar(255) DEFAULT '',
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
@@ -125,6 +123,9 @@ CREATE TABLE `comment` (
 INSERT INTO `comment` VALUES ('4', '0', '博主的博客做的太棒了！', '2020-04-10 12:03:45', '3', '123.130.171.211', '1', 'Wills');
 INSERT INTO `comment` VALUES ('5', '0', '我是博主！', '2020-04-10 12:15:44', '3', '123.130.171.211', '1', 'Tinx');
 INSERT INTO `comment` VALUES ('6', '0', '很棒哦', '2020-04-10 12:16:35', '3', '123.130.171.211', '1', 'Bob');
+INSERT INTO `comment` VALUES ('7', '0', '受益匪浅！', '2020-05-27 08:56:53', '9', '39.86.242.35', '0', '乖乖的小虎');
+INSERT INTO `comment` VALUES ('8', '0', '还不错哦，赞一个', '2020-05-27 08:57:07', '9', '39.86.242.35', '0', '你好吗？');
+INSERT INTO `comment` VALUES ('9', '0', 'alert(\'abc\')', '2020-06-02 04:30:20', '11', '39.86.242.35', '0', '你好吗？');
 
 -- ----------------------------
 -- Table structure for config
@@ -184,7 +185,7 @@ CREATE TABLE `file` (
   `file_description` varchar(255) DEFAULT NULL,
   `file_key` varchar(255) NOT NULL,
   PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of file
@@ -193,6 +194,26 @@ INSERT INTO `file` VALUES ('1', 'http://image.tinx.top/2020/3/31/articleTitle/se
 INSERT INTO `file` VALUES ('2', 'http://image.tinx.top/2020/3/31/articleTitle/water.jpg', 'image/jpeg', '2020/3/31/的文章简略图', '2020/3/31/articleTitle/water.jpg');
 INSERT INTO `file` VALUES ('3', 'http://image.tinx.top/2020/4/10/articleTitle/sun.jpg', 'image/jpeg', '2020/4/10/的文章简略图', '2020/4/10/articleTitle/sun.jpg');
 INSERT INTO `file` VALUES ('4', 'http://image.tinx.top/2020/4/11/articleTitle/tree&water.jpg', 'image/jpeg', '2020/4/11/的文章简略图', '2020/4/11/articleTitle/tree&water.jpg');
+INSERT INTO `file` VALUES ('5', 'http://image.tinx.top/2020/5/27/articleTitle/time.jpg', 'image/jpeg', '2020/5/27/的文章简略图', '2020/5/27/articleTitle/time.jpg');
+INSERT INTO `file` VALUES ('6', 'http://image.tinx.top/2020/6/1/articleTitle/cartoon.jpg', 'image/jpeg', '2020/6/1/的文章简略图', '2020/6/1/articleTitle/cartoon.jpg');
+INSERT INTO `file` VALUES ('7', 'http://image.tinx.top/2020/6/1/articleTitle/cartoon1.jpg', 'image/jpeg', '2020/6/1/的文章简略图', '2020/6/1/articleTitle/cartoon1.jpg');
+
+-- ----------------------------
+-- Table structure for log
+-- ----------------------------
+DROP TABLE IF EXISTS `log`;
+CREATE TABLE `log` (
+  `log_id` int(11) NOT NULL,
+  `log_content` varchar(255) NOT NULL,
+  `log_operationDate` datetime NOT NULL,
+  `log_requireType` varchar(255) NOT NULL,
+  `log_requireIp` varchar(255) NOT NULL,
+  PRIMARY KEY (`log_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of log
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for menu
@@ -215,8 +236,6 @@ INSERT INTO `menu` VALUES ('3', 'JAVA', '/search/Java', '2');
 INSERT INTO `menu` VALUES ('4', 'Cpp', '/search/Cpp', '2');
 INSERT INTO `menu` VALUES ('5', 'Python', '/search/Python', '2');
 INSERT INTO `menu` VALUES ('6', 'Golang', '/search/Go', '2');
-INSERT INTO `menu` VALUES ('7', 'Lua', '/search/Lua', '2');
-INSERT INTO `menu` VALUES ('8', 'C', '/search/C', '2');
 INSERT INTO `menu` VALUES ('9', '杂谈', '/search/other', '0');
 INSERT INTO `menu` VALUES ('10', '生活', '/other/life', '9');
 INSERT INTO `menu` VALUES ('11', '旅行', '/other/travel', '9');
@@ -354,7 +373,7 @@ CREATE TABLE `role` (
   `role_name` varchar(255) NOT NULL,
   `role_description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role
@@ -365,6 +384,7 @@ INSERT INTO `role` VALUES ('3', '评论审查员', '审查劣质评论');
 INSERT INTO `role` VALUES ('4', '读者', '普通用户注册');
 INSERT INTO `role` VALUES ('5', '游客', '游客只有普通的阅读文章权限');
 INSERT INTO `role` VALUES ('8', '博客测试角色', '12312321');
+INSERT INTO `role` VALUES ('9', 'abc', 'abc');
 
 -- ----------------------------
 -- Table structure for role_user
@@ -386,6 +406,7 @@ INSERT INTO `role_user` VALUES ('1', '1');
 INSERT INTO `role_user` VALUES ('1', '2');
 INSERT INTO `role_user` VALUES ('1', '3');
 INSERT INTO `role_user` VALUES ('1', '4');
+INSERT INTO `role_user` VALUES ('2', '4');
 INSERT INTO `role_user` VALUES ('1', '5');
 
 -- ----------------------------
@@ -425,12 +446,13 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`,`user_name`),
   UNIQUE KEY `userName_unique` (`user_name`) USING BTREE COMMENT 'userName 唯一不重复',
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'wills', 'fc9ed5f8a39402fae2716c1509d05f27', '0.0.0.0', '2020-02-28 10:47:40', '123', '1');
+INSERT INTO `user` VALUES ('2', 'tinx', 'fc9ed5f8a39402fae2716c1509d05f27', '0.0.0.0', '2020-05-31 22:34:34', '0000', '1');
 
 -- ----------------------------
 -- Table structure for user_info
@@ -452,6 +474,7 @@ CREATE TABLE `user_info` (
 -- Records of user_info
 -- ----------------------------
 INSERT INTO `user_info` VALUES ('1', '0', '23', '17607113011', 'loveing490@qq.com', '山东省烟台市', '我会是那个最重要的人！！');
+INSERT INTO `user_info` VALUES ('2', '0', '23', '18660547521', 'loveing490@qq.com', '山东省烟台市', '我会是那个最重要的人！！');
 
 -- ----------------------------
 -- Table structure for websettings

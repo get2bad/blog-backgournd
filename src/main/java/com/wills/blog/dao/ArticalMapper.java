@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface ArticalMapper extends tk.mybatis.mapper.common.Mapper<Artical> {
 
-    @Update("update artical set status = (case `status` when 0 then 1 else 0 end) where artical = #{articalId}")
+    @Update("update artical set status = (case `status` when 0 then 1 else 0 end) where artical_id = #{articalId}")
     public void changeStatus(@Param("articalId") int articalId);
 
     @Select("select sum(view_count) from artical")

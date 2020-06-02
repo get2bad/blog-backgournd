@@ -5,6 +5,7 @@ import com.wills.blog.bean.Result;
 import com.wills.blog.service.ConfigService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ public class ConfigController {
 
     @GetMapping("getAll")
     @ApiOperation(value = "获取所有的配置信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result getAll(){
         Map<String,Object> m = new HashMap<>();
         m.put("allConfig",configService.getAll());
@@ -30,6 +32,7 @@ public class ConfigController {
 
     @PutMapping("add")
     @ApiOperation(value = "添加配置信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result add(@RequestBody Config config){
         configService.add(config);
         return Result.buildSuccess();
@@ -37,6 +40,7 @@ public class ConfigController {
 
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "删除配置信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result delete(@PathVariable("id") int id){
         configService.delete(id);
         return Result.buildSuccess();
@@ -44,6 +48,7 @@ public class ConfigController {
 
     @PostMapping("update")
     @ApiOperation(value = "修改配置信息")
+    @RequiresRoles(value = {"系统管理员"})
     public Result update(@RequestBody Config config){
         configService.update(config);
         return Result.buildSuccess();

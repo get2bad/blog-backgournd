@@ -12,6 +12,7 @@ import com.wills.blog.service.FileService;
 import com.wills.blog.service.WebSettingsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,14 +32,15 @@ public class FileController {
 
     @PutMapping("add")
     @ApiOperation(value = "文件上传")
+    @RequiresRoles(value = {"系统管理员"})
     public Result add(@RequestBody File file){
-        System.out.println(file);
         fileService.add(file);
         return Result.buildSuccess();
     }
 
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "文件删除")
+    @RequiresRoles(value = {"系统管理员"})
     public Result delete(@PathVariable("id") int fileId){
         fileService.delete(fileId);
         return Result.buildSuccess();
@@ -46,6 +48,7 @@ public class FileController {
 
     @PostMapping("deleteKey")
     @ApiOperation(value = "文件删除")
+    @RequiresRoles(value = {"系统管理员"})
     public Result delete(@RequestBody File file) throws QiniuException {
         //数据库删除文件信息
         String path = file.getFilePath();
@@ -61,6 +64,7 @@ public class FileController {
 
     @PostMapping("update")
     @ApiOperation(value = "文件修改")
+    @RequiresRoles(value = {"系统管理员"})
     public Result update(@RequestBody File file){
         fileService.update(file);
         return Result.buildSuccess();
@@ -68,6 +72,7 @@ public class FileController {
 
     @GetMapping("getAll")
     @ApiOperation(value = "获取所有文件信息")
+//    @RequiresRoles(value = {"系统管理员"})
     public Result getAll(){
         Map<String,Object> m = new HashMap<>();
         m.put("allFile",fileService.getAll());

@@ -1,24 +1,23 @@
 package com.wills.blog.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.wills.blog.bean.*;
 import com.wills.blog.dao.UserInfoMapper;
 import com.wills.blog.dao.UserMapper;
-import com.wills.blog.bean.UserInfo;
-import com.wills.blog.bean.WillsPageHelper;
-import com.wills.blog.bean.User;
 import com.wills.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.annotation.Resource;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
-    @Autowired
+    @Resource
     private UserInfoMapper userInfoMapper;
 
     @Override
@@ -72,6 +71,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(int id) {
         return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public User getByUserName(String userName) {
+        Example e = new Example(User.class);
+        Example.Criteria criteria = e.createCriteria();
+        criteria.andEqualTo("userName",userName);
+        List<User> list = userMapper.selectByExample(e);
+        return list.get(0);
+    }
+
+    @Override
+    public List<Role> getRoleListByUserId(int userId) {
+        return userMapper.getRoleListByUserId(userId);
+    }
+
+    @Override
+    public List<Permission> getPermissionListByRoleId(int roleId) {
+        return userMapper.getPermissionListByRoleId(roleId);
     }
 
     public Example createExample(User user){

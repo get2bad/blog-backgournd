@@ -1,8 +1,6 @@
 package com.wills.blog.service;
 
-import com.wills.blog.bean.User;
-import com.wills.blog.bean.UserInfo;
-import com.wills.blog.bean.WillsPageHelper;
+import com.wills.blog.bean.*;
 
 import java.util.List;
 
@@ -34,4 +32,13 @@ public interface UserService {
 
     // 获得某个ID的用户信息
     public User getById(int id);
+
+    // 通过用户名查询某个特定用户
+    public User getByUserName(String userName);
+
+    // 查询某个用户的角色
+    public List<Role> getRoleListByUserId(int userId);
+
+    // 查询某个角色的所有权限
+    public List<Permission> getPermissionListByRoleId(int roleId);
 }

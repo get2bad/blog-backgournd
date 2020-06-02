@@ -2,7 +2,9 @@ package com.wills.blog.bean;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ import java.io.Serializable;
 @Table(name = "permission_role")
 @ApiModel(value = "角色权限")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PermissionRole implements Serializable {
 
     @Id
@@ -28,8 +32,4 @@ public class PermissionRole implements Serializable {
         this.roleId = roleId;
     }
 
-    public PermissionRole(int permissionId, int roleId) {
-        this.permissionId = permissionId;
-        this.roleId = roleId;
-    }
 }

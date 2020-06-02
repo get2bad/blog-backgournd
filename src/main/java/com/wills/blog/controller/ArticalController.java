@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
@@ -50,6 +51,12 @@ public class ArticalController {
     @Qualifier("restHighLevelClient")
     private RestHighLevelClient client;
 
+    /**
+     * 从Elasticsearch中搜索文章
+     * @param condition
+     * @return
+     * @throws IOException
+     */
     @GetMapping("getByES/{condition}")
     @ApiOperation(value = "文章搜索功能")
     public Result getByCondition(@PathVariable("condition") String condition) throws IOException {
@@ -87,8 +94,14 @@ public class ArticalController {
         return Result.buildSuccess(list);
     }
 
+    /**
+     * 将所有的文章数据放入ES中 只有系统管理员才可以操作
+     * @return
+     * @throws IOException
+     */
     @GetMapping("putAllInES")
     @ApiOperation(value = "把所有的数据放入到ES中")
+    @RequiresRoles(value = {"系统管理员"})
     public Result putAllInEs() throws IOException {
         BulkRequest req = new BulkRequest();
         List<Artical> allPass = articalService.getAllPass(new WillsPageHelper(1, 999));
@@ -110,8 +123,16 @@ public class ArticalController {
         }
         return Result.buildServerError();
     }
+
+    /**
+     * 添加文章
+     * @param artical
+     * @return
+     * @throws ParseException
+     */
     @PutMapping("add")
     @ApiOperation(value = "添加文章")
+    @RequiresRoles(value = {"系统管理员"})
     public Result add(@RequestBody Artical artical) throws ParseException {
         System.out.println(artical);
         if(artical.getArticalId() != 0) {
@@ -126,27 +147,51 @@ public class ArticalController {
         return Result.buildSuccess();
     }
 
+    /**
+     * 通过文章
+     * @param id
+     * @return
+     */
     @PutMapping("/pass/{id}")
     @ApiOperation(value = "通过文章")
+    @RequiresRoles(value = {"系统管理员"})
     public Result pass(@PathVariable("id") int id){
         articalService.pass(id);
         return Result.buildSuccess();
     }
 
+    /**
+     * 通过文章ID删除文章
+     * @param id
+     * @return
+     */
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "删除文章")
+    @RequiresRoles(value = {"系统管理员"})
     public Result delete(@PathVariable("id") int id){
         articalService.delete(id);
         return Result.buildSuccess();
     }
 
+    /**
+     * 修改文章
+     * @param artical
+     * @return
+     */
     @PostMapping("update")
     @ApiOperation(value = "修改文章")
+    @RequiresRoles(value = {"系统管理员"})
     public Result update(@RequestBody Artical artical){
         articalService.update(artical);
         return Result.buildSuccess();
     }
 
+    /**
+     * 获取所有文章
+     * @param pageHelper
+     * @return
+     * @throws ParseException
+     */
     @PostMapping("getAll")
     @ApiOperation(value = "获取所有文章")
     public Result getAll(@RequestBody WillsPageHelper pageHelper) throws ParseException {
@@ -156,6 +201,12 @@ public class ArticalController {
         return Result.buildSuccess(m);
     }
 
+    /**
+     * 获取所有通过的文章
+     * @param pageHelper
+     * @return
+     * @throws ParseException
+     */
     @PostMapping("getAllPass")
     @ApiOperation(value = "获取所有通过的文章")
     public Result getAllPass(@RequestBody WillsPageHelper pageHelper) throws ParseException {
@@ -166,6 +217,11 @@ public class ArticalController {
         return Result.buildSuccess(m);
     }
 
+    /**
+     * 获取指定ID的文章
+     * @param articalId
+     * @return
+     */
     @GetMapping("get/{id}")
     @ApiOperation(value = "获取指定ID的文章")
     public Result getArticalByPK(@PathVariable("id") int articalId){
@@ -173,13 +229,24 @@ public class ArticalController {
         return Result.buildSuccess(a);
     }
 
+    /**
+     * 修改文章的可读权限
+     * @param articalId
+     * @return
+     */
     @PostMapping("changeStatus/{id}")
     @ApiOperation(value = "修改文章的可读权限")
+    @RequiresRoles(value = {"系统管理员"})
     public Result changeArticalStatus(@PathVariable("id") int articalId){
         articalService.changeStatus(articalId);
         return Result.buildSuccess();
     }
 
+    /**
+     * 条件搜索文章
+     * @param artical
+     * @return
+     */
     @PostMapping("getByCondition")
     @ApiOperation(value = "条件搜索文章")
     public Result getByCondition(@RequestBody Artical artical){
@@ -190,6 +257,12 @@ public class ArticalController {
         return Result.buildSuccess(m);
     }
 
+    /**
+     * 分类下的文章
+     * @param condition
+     * @param willsPageHelper
+     * @return
+     */
     @PostMapping("getByCondition/{condition}")
     @ApiOperation(value = "分类下的文章")
     public Result get(@PathVariable("condition") String condition,@RequestBody WillsPageHelper willsPageHelper) {

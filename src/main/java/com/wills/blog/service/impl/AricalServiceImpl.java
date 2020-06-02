@@ -90,7 +90,7 @@ public class AricalServiceImpl implements ArticalService {
             artical.setComments(commentMapper.selectByExample(e));
             artical.setCommentCount(commentMapper.articleCount(artical.getArticalId()));
             artical.setCategoryName(categoryMapper.selectByPrimaryKey(artical.getCategoryId()).getCategoryName());
-            // TODO like暂时不实现，等实现再来补充！
+            // TODO like暂时不实现，等实现再来补充！ 使用Redis缓存来实现
             artical.setLike(0);
         }
         return all;
